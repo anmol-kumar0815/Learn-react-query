@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
 const SuperHeroes = () => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [superHeroes, setSuperHeroes] = useState([]);
 
   const fetchSuperHeroes = async () => {
@@ -11,7 +11,7 @@ const SuperHeroes = () => {
     } catch (error){
       console.log(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -19,8 +19,8 @@ const SuperHeroes = () => {
     fetchSuperHeroes();
   }, []);
 
-  if(loading){
-    return <div>Loading</div>;
+  if(isLoading){
+    return <div>Loading...</div>;
   }
 
   return (
