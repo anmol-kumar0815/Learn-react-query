@@ -24,3 +24,9 @@ Note: Default staleTime is 0.
 
 example: in weather app you want to refresh temperature on after 10 1 hours in this case set staleTime to 3600000 sec.
 this will reduce number of API call.
+
+Refetch using useQuery
+4. Case1: when you want to fetch data after click on a button in that case pass { enable: false, } as third argument in useQuery
+  and use refetch function in onClick event.
+  Case2: when you want to fetch the data from another component then pass refetch as a prop in another componentand call this refetch
+  from another component. Note: in this case no need to pass { enable: false, } as third argument in useQuery.
