@@ -1,0 +1,1 @@
+1. when a fetch request fails react query automatically retry(make an API call again) to fetch data.
