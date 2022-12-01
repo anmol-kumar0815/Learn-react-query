@@ -34,3 +34,7 @@ Refetch using useQuery
 Callback function
 5. onSuccess will only run if api call is successful.
     onError will only run if api call is failed.
+
+Select in useQuery
+6. If you want to format the api data before showing it on frontend like changing object keys from snakecase to camelcase you can do it
+with passing { select, callbackfunction, } as third argument in useQuery. and inside callbackfunction format the data as per need.

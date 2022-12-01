@@ -4,18 +4,14 @@ import axios from 'axios';
 
 const RQSuperHeroes = () => {
   const fetchSuperHeroes = () => {
-    return axios.get("http://localhost:4000/superheroes1");
+    return axios.get("http://localhost:4000/superheroes");
   };
 
-  const onSuccess = data => {
-    console.log("Fetched data successfully", data.data);
+  const formatResponseData = data => {
+    return data.data.map(superHero => superHero.name);
   };
 
-  const onError = error => {
-    console.log("Encountered an error", error.message)
-  };
-
-  const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, { onSuccess, onError, });
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, { select: formatResponseData, });
 
   console.log({isFetching, isLoading});
 
@@ -31,9 +27,14 @@ const RQSuperHeroes = () => {
     <>
       <h2>SuperHeroes with React Query.</h2>
       <button onClick={refetch}>Fetch Data</button>
-      {data?.data.map(superHero => (
+      {/* {data?.data.map(superHero => (
         <div key={superHero.id}>
           {superHero.name}
+        </div>
+      ))} */}
+      {data.map(superHero => (
+        <div key={superHero}>
+          {superHero}
         </div>
       ))}
     </>
