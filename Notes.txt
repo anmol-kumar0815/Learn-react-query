@@ -30,3 +30,7 @@ Refetch using useQuery
   and use refetch function in onClick event.
   Case2: when you want to fetch the data from another component then pass refetch as a prop in another componentand call this refetch
   from another component. Note: in this case no need to pass { enable: false, } as third argument in useQuery.
+
+Callback function
+5. onSuccess will only run if api call is successful.
+    onError will only run if api call is failed.

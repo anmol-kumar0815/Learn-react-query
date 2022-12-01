@@ -4,10 +4,18 @@ import axios from 'axios';
 
 const RQSuperHeroes = () => {
   const fetchSuperHeroes = () => {
-    return axios.get("http://localhost:4000/superheroes");
+    return axios.get("http://localhost:4000/superheroes1");
   };
 
-  const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, { enabled: false, });
+  const onSuccess = data => {
+    console.log("Fetched data successfully", data.data);
+  };
+
+  const onError = error => {
+    console.log("Encountered an error", error.message)
+  };
+
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, { onSuccess, onError, });
 
   console.log({isFetching, isLoading});
 
