@@ -1,1 +1,16 @@
-1. when a fetch request fails react query automatically retry(make an API call again) to fetch data.
+1. When a fetch request fails react query automatically retry(make an API call again) to fetch data.
+
+2. When useQuery make an api call for the first time and it receive data from api it will cache the data, means if you refresh the
+page you will not see loading... because it is displaying the cache data, value of "isLoading" state will always false in this case.
+
+=> But there can be a case when data in database was updated and useQuery is showing cache data
+
+=> For handing this case useQuery provide one more state as "isFetching", basically what happen is when useQuery have cache data
+it will display the cache data to the ui but it will make an api call in background to get the updated data and that api call is
+completed or not can be identify by "isFetching" state if it is false then data fetched successfuly, if it is true that means
+api call is running in background
+
+Note: the default cache store time is 5 minutes after that cache data will go to garbage.
+
+=> if you want to change this default time pass third argument to the useQuery as { cacheTime: 5000 }, means 5 sec.
+
