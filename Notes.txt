@@ -38,3 +38,7 @@ Callback function
 Select in useQuery
 6. If you want to format the api data before showing it on frontend like changing object keys from snakecase to camelcase you can do it
 with passing { select, callbackfunction, } as third argument in useQuery. and inside callbackfunction format the data as per need.
+
+CustomHook for useQuery
+7. When you want to make same api call like fetch superHeroes at many places in your codebase, one option is to write useQuery everytime
+which is not a good idea, so what you can do is just create a customHook.
