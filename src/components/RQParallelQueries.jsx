@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import useSuperHeroesAndFriends from '../customHooks/useSuperHeroesAndFriends';
 
 const RQParallelQueries = () => {
+  const [ids, setIds] = useState("");
   const { superHeroesLoading, friendsLoading, superHeroesData, friendsData } = useSuperHeroesAndFriends();
 
   if( friendsLoading || superHeroesLoading ){
     return <div>Loading...</div>
   }
-
-  console.log(superHeroesData);
-  console.log(friendsData);
 
   return (
     <div>
@@ -29,6 +28,16 @@ const RQParallelQueries = () => {
           <p>Name: {friend.name}</p>
         </div>
       ))}
+      <hr />
+
+      <h2>Now lets see what is dynamic queries</h2>
+      <label>Enter ids of friends whose data you want to see ( between 1 to 3, inclusive)</label>
+      <input type="text" placeholder='Comma separated' onChange={e => setIds(e.target.value)} />
+      <br />
+      <Link to={`/dynamic-queries/${ids}`}>
+        <button>Fetch</button>
+      </Link>
+      <br />
     </div>
   )
 }
