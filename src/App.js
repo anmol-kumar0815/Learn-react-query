@@ -5,6 +5,7 @@ import './App.css'
 import  Home from './components/Home'
 import RQSuperHeroes from './components/RQSuperHeroes'
 import SuperHeroes from './components/SuperHeroes'
+import RQSuperHero from './components/RQSuperHero';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function App() {
             </ul>
           </nav>
           <Routes>
+            <Route exact path='/rq-super-heroes/:id' element={<RQSuperHero />} />
             <Route exact path='/super-heroes' element={<SuperHeroes />} />
             <Route exact path='/rq-super-heroes' element={<RQSuperHeroes />} />
             <Route exact path='/' element={<Home />} />

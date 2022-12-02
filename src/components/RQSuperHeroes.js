@@ -1,5 +1,6 @@
 import React from 'react'
 import useSuperHeroes from '../customHooks/useSuperHeroes';
+import { Link } from "react-router-dom";
 
 const RQSuperHeroes = () => {
   const onSuccess = data => {
@@ -11,8 +12,6 @@ const RQSuperHeroes = () => {
   };
 
   const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroes(onSuccess, onError);
-
-  console.log({isFetching, isLoading});
 
   if(isLoading || isFetching){
     return <div>Loading...</div>
@@ -26,9 +25,10 @@ const RQSuperHeroes = () => {
     <>
       <h2>SuperHeroes with React Query.</h2>
       <button onClick={refetch}>Fetch Data</button>
-      {data.map(superHero => (
-        <div key={superHero}>
-          {superHero}
+
+      {data.data.map(superHero => (
+        <div key={superHero.id}>
+          <Link to={`/rq-super-heroes/${superHero.id}`}>{superHero.name}</Link>
         </div>
       ))}
     </>
