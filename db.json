@@ -29,5 +29,31 @@
       "id": 3,
       "name": "Umang"
     }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Anmol Kumar"
+    },
+    {
+      "id": 2,
+      "name": "Umang Aggarwal"
+    },
+    {
+      "id": 3,
+      "name": "Rohit Vishwakarma"
+    },
+    {
+      "id": 4,
+      "name": "Vikash chandra"
+    },
+    {
+      "name": "Hello",
+      "id": 5
+    },
+    {
+      "name": "New dummy student",
+      "id": 6
+    }
   ]
 }

@@ -5,17 +5,18 @@ const fetchFriend = id => {
   return axios.get(`http://localhost:4000/friends/${id}`);
 };
 
-const useDynamicFriends = friendIds => {
+const useDynamicFriends = (friendIds, enabled) => {
   const queryResult = useQueries(
     friendIds.map(id => {
       return {
         queryKey: ["friends", id],
         queryFn: () => fetchFriend(parseInt(id)),
       }
-    })
+    }), enabled
   );
 
-  return queryResult; //an array that contain response at every index.
+  const isLoading = queryResult.some(result => result.isLoading)
+  return {isLoading, queryResult};
 }
 
 export default useDynamicFriends;
