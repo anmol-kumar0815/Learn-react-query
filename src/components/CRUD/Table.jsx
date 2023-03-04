@@ -12,6 +12,7 @@ const Table = () => {
   const handleEdit = event => {
     event.preventDefault();
     const studentName = event.target.studentName.value;
+    setIsModalOpen(false);
     addStudents({ name: studentName });
   };
 

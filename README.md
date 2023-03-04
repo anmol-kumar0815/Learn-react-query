@@ -2,3 +2,6 @@
 
 ## How to start a server.
 yarn serve-json => to run api.
+
+
+query-invalidation => In this method we declare an query invalid by using the query key and for because of this, that query runs again to fetch data.

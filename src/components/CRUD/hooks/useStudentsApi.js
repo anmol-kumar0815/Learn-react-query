@@ -9,11 +9,26 @@ const useFetchStudents = () =>
     staleTime: DEFAULT_STALE_TIME,
   });
 
+  //query invalidation
+// const useCreateStudents = () => {
+//   const queryClient = useQueryClient();
+
+//   return useMutation(studentsApi.create, {
+//     onSuccess: () => queryClient.invalidateQueries(STUDENTS_LIST)
+//   });
+// };
+
+  //using query cache or mutation response
 const useCreateStudents = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation(studentsApi.create, {
-    onSuccess: () => queryClient.invalidateQueries(STUDENTS_LIST)
+    onSuccess: data => queryClient.setQueryData([STUDENTS_LIST], oldQueryData => {
+      return {
+        ...oldQueryData,
+        data: [...oldQueryData.data, data.data],
+      }
+    })
   });
 }
 
